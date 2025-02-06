@@ -1,0 +1,45 @@
+.col {
+    text-align: center;
+    padding: 20px;
+}
+
+.button {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.button:hover {
+    transform: scale(1.1);
+}
+
+#blue {
+    background-color: #3498db;
+}
+
+#green {
+    background-color: #2ecc71;
+}
+
+#yellow {  /* Note: you might want to fix the typo in your HTML from "yello" to "yellow" */
+    background-color: #f1c40f;
+}
+
+#purple {
+    background-color: #9b59b6;
+}
+
+h1 {
+    color: aliceblue;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color:aliceblue;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
