@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * JAVASCRIPT PROMISES THEORY
+       *
+       * 1. What is a Promise?
+       * - A Promise is an object representing the eventual completion (or failure)
+       *   of an asynchronous operation
+       * - It's a proxy for a value that may not be known when the promise is created
+       * - Promises solve the "callback hell" problem and make async code more manageable
+       *
+       * 2. Promise States:
+       * - Pending: Initial state, neither fulfilled nor rejected
+       * - Fulfilled: Operation completed successfully
+       * - Rejected: Operation failed
+       * - A promise can only settle once (either fulfill or reject)
+       *
+       * 3. Promise Methods:
+       * - .then(): Handles successful completion
+       * - .catch(): Handles errors
+       * - .finally(): Executes regardless of success or failure
+       *
+       * 4. Creating Promises:
+       * new Promise((resolve, reject) => {
+       *     // Async operation here
+       *     // Call resolve() on success
+       *     // Call reject() on failure
+       * });
+       *
+       * 5. Common Use Cases:
+       * - API calls (fetch)
+       * - File operations
+       * - Database operations
+       * - Any asynchronous tasks
+       *
+       * 6. Promise Static Methods:
+       * - Promise.all(): Waits for all promises to resolve
+       * - Promise.race(): Waits for first promise to settle
+       * - Promise.resolve(): Creates resolved promise
+       * - Promise.reject(): Creates rejected promise
+       *
+       * 7. Async/Await:
+       * - Syntactic sugar for promises
+       * - Makes async code look synchronous
+       * - 'async' functions always return a promise
+       * - 'await' can only be used in async functions
+       *
+       * 8. Error Handling:
+       * - Use try/catch with async/await
+       * - Use .catch() with promise chains
+       * - Errors propagate through promise chains
+       *
+       * 9. Best Practices:
+       * - Always handle errors
+       * - Avoid nesting promises
+       * - Use async/await for cleaner code
+       * - Chain promises properly
+       * - Don't forget to return promises in chains
+       */
+
+      // Creating a simple Promise
+      const myPromise = new Promise((resolve, reject) => {
+        // Simulating an asynchronous operation (like fetching data)
+        setTimeout(() => {
+          const randomNumber = Math.random();
+          if (randomNumber > 0.5) {
+            resolve("Success! Number is: " + randomNumber);
+          } else {
+            reject("Error: Number is too low: " + randomNumber);
+          }
+        }, 2000); // Delays for 2 seconds
+      });
+
+      // Using the Promise
+      console.log("Starting Promise...");
+
+      myPromise
+        .then((result) => {
+          console.log(result); // Executes if Promise resolves
+        })
+        .catch((error) => {
+          console.log(error); // Executes if Promise rejects
+        })
+        .finally(() => {
+          console.log("Promise completed!"); // Executes in both cases
+        });
+
+      // Example of Promise chaining
+      fetch("https://api.example.com/data") // This is just an example URL
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log("Error:", error));
+
+      // Using async/await (modern way to handle Promises)
+      async function fetchData() {
+        try {
+          const response = await fetch("https://api.example.com/data");
+          const data = await response.json();
+          console.log(data);
+        } catch (error) {
+          console.log("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>

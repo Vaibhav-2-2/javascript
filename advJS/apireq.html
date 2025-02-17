@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="apireq.js"></script>
+</body>
+<script>
+    const url = 'https://api.github.com/users/Vaibhav-2-2'
+    const xhr = new XMLHttpRequest();
+     xhr.open('GET', url);
+    xhr.onreadystatechange = function(){
+    console.log(xhr.readyState);
+    if(xhr.readyState === 3){
+        // console.log(this.responseText);
+        // const data = this.responseText
+        // console.log(data);
+        // console.log(typeof data)
+        // const dt = JSON.parse(data)
+        // console.log(typeof dt)
+        // console.log(dt.folloers);
+        const data = JSON.parse(this.responseText)
+        console.log(typeof data);
+        console.log(data.followers);
+        
+        
+    }
+    }
+    xhr.send();
+    
+</script>
+</html>

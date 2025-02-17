@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <button>Button Clicked</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "React";
+        this.server = "https://localhost:300";
+
+        // The 'bind' method is used to preserve the correct 'this' context
+        // Without bind(), 'this' inside handleClick would reference the button element
+        // instead of our React class instance
+
+        // When an event handler is called, by default 'this' refers to the element
+        // that triggered the event. Using bind(this) ensures that 'this' inside
+        // handleClick() refers to our React class instance, allowing access to
+        // properties like this.server
+
+        document
+          .querySelector("button")
+          .addEventListener("click", this.handleClick.bind(this));
+      }
+      handleClick() {
+        console.log("button clicked");
+        console.log(this.server);
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
